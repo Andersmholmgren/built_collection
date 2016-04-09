@@ -97,7 +97,7 @@ class BuiltMap<K, V> {
   // Map.
 
   /// As [Map].
-  V operator [](K key) => _map[key];
+  V operator [](Object key) => _map[key];
 
   /// As [Map.containsKey].
   bool containsKey(Object key) => _map.containsKey(key);
@@ -161,11 +161,11 @@ class BuiltMap<K, V> {
   }
 
   void _checkGenericTypeParameter() {
-    if (null is K && K != Object) {
+    if (K == dynamic) {
       throw new UnsupportedError(
           'explicit key type required, for example "new BuiltMap<int, int>"');
     }
-    if (null is V && V != Object) {
+    if (V == dynamic) {
       throw new UnsupportedError('explicit value type required,'
           ' for example "new BuiltMap<int, int>"');
     }
